@@ -1,0 +1,454 @@
+
+			/* оверлей для увеличенного фото */
+			.zoom-overlay {
+			    position: fixed;
+			    inset: 0;
+			    background: rgba(0, 0, 0, 0.6);
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    z-index: 1000;
+			}
+			.zoom-overlay img {
+			    max-width: 96vw;
+			    max-height: 96vh;
+			    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+			    border-radius: 10px;
+			    cursor: zoom-out;
+			    background: #fff;
+			}
+
+			/* скрыть любые полностью пустые строки (нет текста, картинок и ссылок) */
+			table.price tbody tr:not(:has(td:not(:empty), td img, td a)) {
+			    display: none;
+			}
+
+			:root {
+			    --bg: #ffffff;
+			    --text: #111;
+			    --muted: #555;
+			    --line: #e5e7eb;
+			    --accent: #0d9488;
+			    --thead: #f7fafc;
+			    --hover: #fff9c4;
+			}
+			* {
+			    box-sizing: border-box;
+			}
+			html,
+			body {
+			    height: 100%;
+			}
+			body {
+			    margin: 0;
+			    background: var(--bg);
+			    color: var(--text);
+			    font: 14px/1.45 system-ui, Segoe UI, Roboto, Arial, sans-serif;
+			}
+			.header {
+			    position: sticky;
+			    top: 0;
+			    z-index: 200; /* было 10 */
+			    display: flex;
+			    gap: 0.6rem;
+			    align-items: center;
+			    flex-wrap: wrap;
+			    padding: 10px 14px;
+			    background: #fff;
+			    border-bottom: 1px solid var(--line);
+			    backdrop-filter: saturate(120%) blur(4px);
+			}
+			.header .title {
+			    font-weight: 800;
+			    font-size: 18px;
+			    margin-right: auto;
+			}
+			.header input[type="search"] {
+			    flex: 1;
+			    min-width: 240px;
+			    max-width: 600px;
+			    padding: 0.7rem 0.9rem;
+			    border: 1px solid #b7e4c7;
+			    border-radius: 0.6rem;
+			    background: #e9f5ee;
+			    color: #111;
+			    outline: none;
+			    font-size: 16px;
+			}
+			.header .btn {
+			    padding: 0.55rem 0.8rem;
+			    border: 1px solid #cbd5e1;
+			    border-radius: 0.6rem;
+			    background: #fff;
+			    cursor: pointer;
+.header .btn.price {
+  background: #16a34a;   /* зелёный фон */
+  border-color: #15803d; /* тёмно-зелёная рамка */
+  color: #fff;           /* белый текст */
+  font-weight: 600;
+}
+.header .btn.green:hover {
+  background: #15803d;   /* чуть темнее при наведении */
+}
+			}
+			.header .btn.primary {
+			    background: #16a34a;
+			    color: #fff;
+			    border-color: #16a34a;
+			}
+			.header .group {
+			    display: flex;
+			    gap: 0.4rem;
+			    align-items: center;
+			}
+			.container {
+			    padding: 16px;
+			}
+			:root {
+			    --header-offset: 0px;
+			} /* отступ для thead — задаём из JS */
+
+			.tblwrap {
+			    overflow: visible !important;
+			    position: relative;
+			}
+
+			/* заголовок таблицы всегда под шапкой */
+			table.price thead th {
+			    position: sticky;
+			    top: var(--header-offset); /* <— ничего фиксированного типа 62px */
+			    z-index: 150;
+			    background: #f8fafc;
+			    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+			}
+
+			/* если используете «залипание» первого столбца */
+			th:first-child,
+			td:first-child {
+			    position: sticky;
+			    left: 0;
+			    background: #fff;
+			    z-index: 140;
+			}
+
+			h2 {
+			    margin: 18px 0 8px 0;
+			    font-size: 18px;
+			}
+			.tblwrap {
+			    overflow: auto;
+			    border: 1px solid var(--line);
+			    border-radius: 12px;
+			    background: #fff;
+			}
+			table.price {
+			    width: 100%;
+			    border-collapse: separate;
+			    border-spacing: 0;
+			}
+			thead th {
+			    position: sticky;
+			    top: 62px;
+			    background: var(--thead);
+			    border-bottom: 1px solid var(--line);
+			    padding: 10px;
+			    text-align: left;
+			    z-index: 1;
+			}
+			tbody td {
+			    border-bottom: 1px solid var(--line);
+			    padding: 8px 10px;
+			    vertical-align: middle;
+			}
+			tbody tr:hover {
+			    background: var(--hover);
+			}
+			th:first-child,
+			td:first-child {
+			    position: sticky;
+			    left: 0;
+			    background: inherit;
+			}
+			.imgcell {
+			    width: 220px;
+			}
+			.imgcell img {
+			    max-width: 72px;
+			    max-height: 72px;
+			    border-radius: 6px;
+			    cursor: zoom-in;
+			    display: block;
+			    margin: auto;
+			}
+			a.urla {
+			    display: inline-block;
+			    padding: 0.35rem 0.55rem;
+			    border: 1px solid #cbd5e1;
+			    border-radius: 0.55rem;
+			    background: #fff;
+			    color: #111;
+			    text-decoration: none;
+			    font-weight: 600;
+			}
+			a.urla:hover {
+			    border-color: #16a34a;
+			}
+			.count {
+			    opacity: 0.75;
+			    margin-left: 8px;
+			}
+			.toolbar {
+			    display: flex;
+			    flex-wrap: wrap;
+			    gap: 0.5rem;
+			    align-items: center;
+			    margin-top: 0.5rem;
+			}
+			.toolbar label {
+			    font-weight: 600;
+			}
+			.input-small {
+			    width: 6rem;
+			    padding: 0.45rem 0.5rem;
+			    border: 1px solid #cbd5e1;
+			    border-radius: 0.5rem;
+			}
+			.sticky-top {
+			    position: sticky;
+			    top: 0;
+			    background: #fff;
+			    z-index: 9;
+			}
+			.small {
+			    font-size: 12px;
+			    color: var(--muted);
+			}
+			footer {
+			    padding: 28px 18px;
+			    color: #777;
+			    border-top: 1px solid var(--line);
+			}
+		
+
+
+			:root {
+			    --header-offset: 0px;
+			}
+			.header {
+			    z-index: 200 !important;
+			}
+			.tblwrap {
+			    overflow: visible !important;
+			    position: relative;
+			}
+			table.price thead th {
+			    position: sticky;
+			    top: var(--header-offset);
+			    z-index: 150;
+			    background: #f8fafc;
+			    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+			}
+			td.imgcell {
+			    text-align: center;
+			}
+			td.imgcell img {
+			    display: block;
+			    margin: auto;
+			}
+		
+
+
+			tr.subcat td {
+			    font-weight: 700;
+			    background: #fff7c2; /* мягко-жёлтый */
+			}
+		
+
+
+			td.promo {
+			    background: #ffe4e1;
+			    font-weight: 700;
+			    color: #b22222;
+			}
+		
+
+
+			.only-promo-filter {
+			    margin: 10px 0;
+			    font-weight: bold;
+			}
+		
+
+
+			th .promo-toggle {
+			  display: inline-flex;
+			  align-items: center;
+			  gap: 6px;
+			  margin-left: 8px;
+			  padding: 4px 8px;
+			  border: 1px solid #f59e0b;
+			  background: #fff7ed; /* заметный персиковый */
+			  color: #9a3412;
+			  border-radius: 999px;
+			  font-weight: 700;
+			  font-size: 12px;
+			  cursor: pointer;
+			  user-select: none;
+			  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+			}
+			th .promo-toggle input[type="checkbox"] {
+			  accent-color: #f59e0b;
+			  width: 16px;
+			  height: 16px;
+			}
+		
+
+
+			.distributor-row td { background-color: #e8f6ff; }
+		
+
+
+			/* Pill-styled "Только акции" toggle inside the header */
+			th .promo-toggle {
+			  display: inline-flex;
+			  align-items: center;
+			  gap: 8px;
+			  margin-left: 8px;
+			  padding: 6px 12px;
+			  border: 2px solid #f59e0b;
+			  background: #fff7ed;
+			  color: #9a3412;
+			  border-radius: 999px;
+			  font-weight: 700;
+			  font-size: 13px;
+			  cursor: pointer;
+			  user-select: none;
+			  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+			}
+			th .promo-toggle input[type="checkbox"] {
+			  accent-color: #f59e0b;
+			  width: 16px;
+			  height: 16px;
+			  margin: 0;
+			}
+			/* Make price column easily findable */
+			td.price { white-space: nowrap; }
+		
+
+
+			/* Pill-styled promo toggle in header */
+			.promo-toggle{
+			  display:inline-flex;align-items:center;gap:8px;
+			  margin-left:8px;padding:6px 12px;
+			  border:2px solid #f59e0b;background:#fff7ed;color:#9a3412;
+			  border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;user-select:none
+			}
+			.promo-toggle input{accent-color:#f59e0b;width:16px;height:16px;margin:0}
+		
+
+
+			/* Pill-styled promo toggle in header */
+			.promo-toggle{
+			  display:inline-flex;align-items:center;gap:8px;
+			  margin-left:8px;padding:6px 12px;
+			  border:2px solid #f59e0b;background:#fff7ed;color:#9a3412;
+			  border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;user-select:none
+			}
+			.promo-toggle input{accent-color:#f59e0b;width:16px;height:16px;margin:0}
+		
+
+
+			/* Pill-styled promo toggle in header */
+			.promo-toggle{
+			  display:inline-flex;align-items:center;gap:8px;
+			  margin-left:8px;padding:6px 12px;
+			  border:2px solid #f59e0b;background:#fff7ed;color:#9a3412;
+			  border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;user-select:none
+			}
+			.promo-toggle input{accent-color:#f59e0b;width:16px;height:16px;margin:0}
+		
+
+
+			/* Стили для акционных цен */
+			td.promo {
+			  font-weight: 700;
+			  color: #d32f2f;
+			  background: #fff0f0;
+			  position: relative;
+			}
+			td.price.old {
+			  text-decoration: line-through;
+			  color: #777;
+			}
+			td.promo::before {
+			  content: "Акция";
+			  position: absolute;
+			  top: 4px;
+			  left: 4px;
+			  background: #f59e0b;
+			  color: #fff;
+			  font-size: 11px;
+			  font-weight: bold;
+			  padding: 2px 6px;
+			  border-radius: 6px;
+			}
+		
+
+
+			.zoom-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+			  display: none; align-items: center; justify-content: center; z-index: 1000; }
+			.zoom-overlay img { max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+			.nav-btn { position: absolute; top: 50%; transform: translateY(-50%);
+			  background: rgba(255,255,255,0.7); border: none; font-size: 32px; padding: 8px 14px;
+			  cursor: pointer; border-radius: 50%; }
+			.prev-btn { left: 20px; }
+			.next-btn { right: 20px; }
+			.nav-btn:hover { background: rgba(255,255,255,0.9); }
+		
+
+
+			.zoom-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+			  display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+			.zoom-overlay img { max-width: 90%; max-height: 80%; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+			.zoom-caption { margin-top: 12px; color: #fff; font-size: 16px; font-weight: 600; text-align: center; max-width: 90%; }
+			.nav-btn { position: absolute; top: 50%; transform: translateY(-50%);
+			  background: rgba(255,255,255,0.7); border: none; font-size: 32px; padding: 8px 14px;
+			  cursor: pointer; border-radius: 50%; }
+			.prev-btn { left: 20px; }
+			.next-btn { right: 20px; }
+			.nav-btn:hover { background: rgba(255,255,255,0.9); }
+		
+
+
+			.zoom-overlay button {
+			  position: absolute;
+			  top: 50%;
+			  transform: translateY(-50%);
+			  background: rgba(255,255,255,0.2);
+			  border: none;
+			  color: white;
+			  font-size: 2rem;
+			  padding: 0.5rem 1rem;
+			  cursor: pointer;
+			}
+			.zoom-overlay button.prev { left: 20px; }
+			.zoom-overlay button.next { right: 20px; }
+		
+
+
+			/* Подсветка новинок */
+			tr.new-item td { background: #e6ffed !important; }
+			tr.new-item td:first-child::before { content: "Новинка "; color: #047857; font-weight: 700; }
+		
+
+.fixed-price { background: #ffe4e1; }
+td.price, td.opt { white-space: nowrap; }
+.imgcell img { max-width: 90px; max-height: 90px; border-radius: 6px; cursor: zoom-in; }
+.kursy { margin: 12px 0 8px; }
+.kursy ul { list-style: none; padding: 0; margin: 0; }
+.kursy li { margin: 4px 0; }
+.kursy-inline { gap: 10px; font-size: 14px; opacity: .9; }
+.kursy-inline span { padding: 2px 6px; border-radius: 6px; background: rgba(0,0,0,.06); }
+.zoom-overlay { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.6); z-index: 9999; }
+.zoom-overlay img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+.inline-check { display: inline-flex; align-items: center; gap: 6px; }
